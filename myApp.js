@@ -26,6 +26,14 @@ app.use(helmet.noSniff());
 // Some web applications will serve untrusted HTML for download. Some versions of Internet Explorer by default open those HTML files in the context of your site. This means that an untrusted HTML page could start doing bad things in the context of your pages. This middleware sets the X-Download-Options header to noopen. This will prevent IE users from executing downloads in the trusted site’s context.
 app.use(helmet.ieNoOpen());
 
+// HTTP Strict Transport Security (HSTS) is a web security policy which helps to protect websites against protocol downgrade attacks and cookie hijacking. If your website can be accessed via HTTPS you can ask user’s browsers to avoid using insecure HTTP. By setting the header Strict-Transport-Security, you tell the browsers to use HTTPS for the future requests in a specified amount of time. This will work for the requests coming after the initial request.
+
+var ninetyDaysInSeconds= 90*24*60*60; // Creates a variable of 90 days in the form of seconds
+app.use(helmet.hsts(
+  {maxAge: ninetyDaysInSeconds, force: true}
+));
+
+
 
 
 
