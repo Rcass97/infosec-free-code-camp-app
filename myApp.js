@@ -45,7 +45,7 @@ app.use(helmet.noCache());
 
 // By default, directives are wide open, so it’s important to set the defaultSrc directive as a fallback. Helmet supports both defaultSrc and default-src naming styles. The fallback applies for most of the unspecified directives.
 app.use(helmet.contentSecurityPolicy({
-  directives: {defaultSrc: ["'self'"], scriptSrc: ["'self'","'trusted-cdn.com'"]}} //Directives object configures page with default and script sources
+  directives: {defaultSrc: ["'self'"], scriptSrc: ["'self'",'trusted-cdn.com']}} //Directives object configures page with default and script sources
 ))
 
 
